@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dral/api-template"
+    "url": "https://github.com/dev-lambda/api-template"
   },
   "engines": {
     "node": "^18"

@@ -57,9 +57,9 @@ This will keep a running instance attached to your terminal in order to easily m
 
 ### Publish documentation website to gh-pages
 
-- [Github pages setup](https://github.com/dral/api-template/settings/pages)
+- [Github pages setup](https://github.com/dev-lambda/api-template/settings/pages)
   - Deploy from a branch `gh-pages` `/(root)`
-- [Github actions permissions](https://github.com/dral/clearance/settings/actions)
+- [Github actions permissions](https://github.com/dev-lambda/clearance/settings/actions)
   - Workflow permissions: Read and write
 
 ## Project assets
