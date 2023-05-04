@@ -59,8 +59,6 @@ This will keep a running instance attached to your terminal in order to easily m
 
 - [Github pages setup](https://github.com/dev-lambda/api-template/settings/pages)
   - Deploy from a branch `gh-pages` `/(root)`
-- [Github actions permissions](https://github.com/dev-lambda/clearance/settings/actions)
-  - Workflow permissions: Read and write
 
 ## Project assets
 
