@@ -16,14 +16,12 @@ process.on('SIGINT', () => {
 });
 
 logger.info('Starting server');
-Promise.all([
-  init(app),
-  initdb(),
-])
+Promise.all([init(app), initdb()])
   .then(([instance, connection]) => {
     logger.info('Server started', instance.address());
     logger.info('Connected to db', connection.host);
   })
-  .catch(() => {
+  .catch((error) => {
+    logger.error('Unable to connect to DB', error);
     process.exit(1);
   });
