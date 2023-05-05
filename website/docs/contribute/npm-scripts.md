@@ -21,7 +21,7 @@ Start the server from the transpiled sources.
 npm run prod
 ```
 
-Actual production equivalent may use additional environment variables (see [environment variables](./configuration#environment-variables) and [deployment](./deployment) for more).
+Actual production equivalent may use additional environment variables (see [environment variables](./runtime#environment-variables) and [deployment](./deployment) for more).
 ```sh
 NODE_ENV=production PORT=80 npm run prod
 ```
