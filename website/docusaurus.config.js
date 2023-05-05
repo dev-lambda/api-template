@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'api-template',
   tagline: 'Public documentation template',
-  // favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
   url: 'https://dev-lambda.github.io',
