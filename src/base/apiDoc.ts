@@ -3,6 +3,7 @@ import project from 'src/../package.json';
 import config from 'config';
 import express from 'express';
 import swaggerUi from 'swagger-ui-express';
+import logger from 'src/logger';
 
 const { name: title, version, description } = project;
 const port = config.get<string>('restApi.port');
@@ -31,6 +32,8 @@ const options: swaggerJsdoc.Options = {
   apis: ['./src/**/*.ts'],
 };
 
+logger.debug('Resolved OpenAPI options', options);
+
 export const uiOptions = {
   customCss: '.swagger-ui .topbar { display: none }',
 };
@@ -43,7 +46,10 @@ const router = express.Router();
  * @openapi
  * /openAPI:
  *   get:
+ *     summary: API specs file
  *     description: Get the OpenAPI json description for this API
+ *     tags:
+ *      - integration
  *     responses:
  *       200:
  *         description: A json containing the OpenAPI specification

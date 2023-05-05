@@ -25,7 +25,7 @@ let defaultOptions: checker.InitOpts = {
 
 class licenseInfo {
   report: checker.ModuleInfos = {};
-  licenceCountPerType: Record<string, object[]> = {};
+  licenceCountPerType: licenseSummary = {};
   self: ModuleInfo = {};
   options: checker.InitOpts;
   initialized: boolean;
@@ -82,7 +82,10 @@ export const infos = new licenseInfo();
  * @openapi
  * /license:
  *   get:
+ *     summary: License
  *     description: Get the license of this project
+ *     tags:
+ *      - licence information
  *     responses:
  *       200:
  *         description: This project's licence
@@ -99,7 +102,10 @@ export const selfLicense = async (
  * @openapi
  * /licenses:
  *   get:
+ *     summary: Dependencies
  *     description: Get the complete list of licenses used
+ *     tags:
+ *      - licence information
  *     responses:
  *       200:
  *         description: Returns the production packages licence report
@@ -113,10 +119,29 @@ export const licenses = async (_: express.Request, res: express.Response) => {
  * @openapi
  * /licenses/summary:
  *   get:
+ *     summary: License types used
  *     description: Get a summary of dependencies per license type
+ *     tags:
+ *      - licence information
  *     responses:
  *       200:
- *         description: Returns the production packages licence summary
+ *         description: Returns a dictionary of dependent packages grouped per license type
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/licenseSummary'
+ *             example:
+ *                MIT:
+ *                  - {
+ *                      name: "@apidevtools/openapi-schemas",
+ *                      version: "2.1.0",
+ *                      description: "JSON Schemas for every version of the OpenAPI Specification"
+ *                    }
+ *                  - {
+ *                      name: "@apidevtools/swagger-methods",
+ *                      version: "3.0.2",
+ *                      description: "HTTP methods that are supported by Swagger 2.0"
+ *                    }
  */
 export const summary = async (_: express.Request, res: express.Response) => {
   const summary = await infos.getSummary();
@@ -131,14 +156,44 @@ router.get('/licenses/summary', summary);
 
 export default router;
 
-export const licenceCount = (
-  report: checker.ModuleInfos
-): Record<string, object[]> => {
-  let counter: Record<string, object[]> = { unknown: [] };
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     licenseSummary:
+ *       type: object
+ *       additionalProperties:
+ *         type: array
+ *         $ref: '#/components/schemas/licenceDigest'
+ */
+type licenseSummary = Record<string, licenceDigest[]>;
+
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     licenceDigest:
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *         version:
+ *           type: string
+ *         description:
+ *           type: string
+ */
+interface licenceDigest {
+  name?: string;
+  version?: string;
+  description?: string;
+}
+
+export const licenceCount = (report: checker.ModuleInfos): licenseSummary => {
+  let counter: licenseSummary = { unknown: [] };
 
   Object.values(report).forEach((moduleInfo) => {
     const { licenses, name, version, description } = moduleInfo;
-    const info = { name, version, description };
+    const info: licenceDigest = { name, version, description };
     if (!licenses) {
       counter.unknown.push(info);
     } else if (typeof licenses === 'string') {

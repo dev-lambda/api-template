@@ -36,7 +36,7 @@ The following files are used:
   - `production.yaml`: overrides config values for production. Don't put any sensitive data here. Prever environment variables instead.
   - `test.yaml`: used when running tests.
   - `local-development.yaml`: (optional) use this to override values for your local development enviromnent. This file should not be commited.
-  - `loca-test.yaml`: (optional) use this to override values for your local test enviromnent. This file should not be commited.
+  - `local-test.yaml`: (optional) use this to override values for your local test enviromnent. This file should not be commited.
 
 These files follow the following tree structure:
 

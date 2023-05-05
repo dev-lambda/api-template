@@ -4,11 +4,35 @@ import express from 'express';
  * @openapi
  * /:
  *   get:
- *     description: Verify server is up
+ *     summary: Base response
+ *     description: The default `200 OK` response at the root
+ *     tags:
+ *       - API
  *     responses:
  *       200:
- *         description: Returns `ok` status
+ *         description: The `ok` response
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/message'
+ *             example:
+ *               message: "ok"
  */
 export const ok = (_: express.Request, res: express.Response) => {
-  return res.sendStatus(200);
+  const result: message = { message: 'ok' };
+  return res.status(200).json(result);
 };
+
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     message:
+ *       type: object
+ *       properties:
+ *         message:
+ *           type: string
+ */
+export interface message {
+  message: string;
+}

@@ -2,7 +2,7 @@
 sidebar_position: 7
 ---
 
-# Publish and Deploy
+# Build, Publish and Deploy
 
 ## Locally testing the docker image
 

@@ -75,5 +75,5 @@ The project is organised as follows:
   - [x] API doc
     - [x] OpenAPI doc
     - [x] Development server url from config
--[x] Persistency
+- [x] Persistency
   - [x] Mongodb setup

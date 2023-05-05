@@ -5,13 +5,44 @@ import { isAlive as dbOk } from 'src/db';
  * @openapi
  * /health:
  *   get:
- *     description: Verify server is up
+ *     summary: Health probe
+ *     description: Health probe for liveness and readiness check
+ *     tags:
+ *      - monitoring
  *     responses:
  *       200:
  *         description: Returns `ok` status
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/healtStatus'
+ *             example:
+ *               server: true
+ *               db: true
  *       500:
  *         description: Either the db or the server is not working as expected
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/healtStatus'
+ *             examples:
+ *               dbFail:
+ *                 summary: the db connexion is faulty
+ *                 value:
+ *                   server: true
+ *                   db: false
+ *               serverFail:
+ *                 summary: the api server is faulty
+ *                 value:
+ *                   server: false
+ *                   db: true
+ *               chaos:
+ *                 summary: pure chaos
+ *                 value:
+ *                   server: false
+ *                   db: false
  */
+
 export const health = (_: express.Request, res: express.Response) => {
   let server = serverOK();
   let db = dbOk();
@@ -20,5 +51,24 @@ export const health = (_: express.Request, res: express.Response) => {
   } else {
     res.status(500);
   }
-  return res.json({ server, db });
+  const result: healtStatus = { server, db };
+  return res.json(result);
 };
+
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     healtStatus:
+ *       type: object
+ *       properties:
+ *         server:
+ *           type: boolean
+ *         db:
+ *           type: boolean
+ *
+ */
+export interface healtStatus {
+  server: boolean;
+  db: boolean;
+}
