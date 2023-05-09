@@ -11,6 +11,9 @@ info:
     name: API Support
     email: support@devlambda.com
     url: http://devlambda.com/support
+  externalDocs:
+    description: Full documentation site
+    url: https://dev-lambda.github.io/api-template/
 servers:
   - url: http://localhost:3000/
     description: Development server
@@ -20,16 +23,20 @@ paths:
       summary: API specs file
       description: Get the OpenAPI json description for this API
       tags:
-        - integration
+        - Integration
       responses:
         '200':
           description: A json containing the OpenAPI specification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/base'
   /health:
     get:
       summary: Health probe
       description: Health probe for liveness and readiness check
       tags:
-        - monitoring
+        - Monitoring
       responses:
         '200':
           description: Returns `ok` status
@@ -67,7 +74,7 @@ paths:
       summary: License
       description: Get the license of this project
       tags:
-        - licence information
+        - License
       responses:
         '200':
           description: This project's licence
@@ -76,7 +83,7 @@ paths:
       summary: Dependencies
       description: Get the complete list of licenses used
       tags:
-        - licence information
+        - License
       responses:
         '200':
           description: Returns the production packages licence report
@@ -85,7 +92,7 @@ paths:
       summary: License types used
       description: Get a summary of dependencies per license type
       tags:
-        - licence information
+        - License
       responses:
         '200':
           description: Returns a dictionary of dependent packages grouped per license type
@@ -169,4 +176,40 @@ components:
       properties:
         message:
           type: string
-tags: []
+    base: |
+      {
+          "$id": "https://spec.openapis.org/oas/3.1/dialect/base",
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+
+          "title": "OpenAPI 3.1 Schema Object Dialect",
+          "description": "A JSON Schema dialect describing schemas found in OpenAPI documents",
+
+          "$vocabulary": {
+              "https://json-schema.org/draft/2020-12/vocab/core": true,
+              "https://json-schema.org/draft/2020-12/vocab/applicator": true,
+              "https://json-schema.org/draft/2020-12/vocab/unevaluated": true,
+              "https://json-schema.org/draft/2020-12/vocab/validation": true,
+              "https://json-schema.org/draft/2020-12/vocab/meta-data": true,
+              "https://json-schema.org/draft/2020-12/vocab/format-annotation": true,
+              "https://json-schema.org/draft/2020-12/vocab/content": true,
+              "https://spec.openapis.org/oas/3.1/vocab/base": false
+          },
+
+          "$dynamicAnchor": "meta",
+
+          "allOf": [
+              { "$ref": "https://json-schema.org/draft/2020-12/schema" },
+              { "$ref": "https://spec.openapis.org/oas/3.1/meta/base" }
+          ]
+      }
+tags:
+  - name: Integration
+    description: Integration support resources
+  - name: Monitoring
+    description: Monitoring and health check features
+  - name: License
+    description: License introspection
+  - name: API
+    description: API specific routes
+    externalDocs:
+      url: https://dev-lambda.github.io/api-template/
