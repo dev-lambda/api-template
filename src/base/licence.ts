@@ -80,12 +80,19 @@ export const infos = new licenseInfo();
 
 /**
  * @openapi
+ * tags:
+ *   - name: License
+ *     description: License introspection
+ */
+
+/**
+ * @openapi
  * /license:
  *   get:
  *     summary: License
  *     description: Get the license of this project
  *     tags:
- *      - licence information
+ *      - License
  *     responses:
  *       200:
  *         description: This project's licence
@@ -105,7 +112,7 @@ export const selfLicense = async (
  *     summary: Dependencies
  *     description: Get the complete list of licenses used
  *     tags:
- *      - licence information
+ *      - License
  *     responses:
  *       200:
  *         description: Returns the production packages licence report
@@ -122,7 +129,7 @@ export const licenses = async (_: express.Request, res: express.Response) => {
  *     summary: License types used
  *     description: Get a summary of dependencies per license type
  *     tags:
- *      - licence information
+ *      - License
  *     responses:
  *       200:
  *         description: Returns a dictionary of dependent packages grouped per license type

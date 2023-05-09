@@ -1,6 +1,14 @@
 import express from 'express';
 import { isAlive as serverOK } from 'src/server';
 import { isAlive as dbOk } from 'src/db';
+
+/**
+ * @openapi
+ * tags:
+ *   - name: Monitoring
+ *     description: Monitoring and health check features
+ */
+
 /**
  * @openapi
  * /health:
@@ -8,7 +16,7 @@ import { isAlive as dbOk } from 'src/db';
  *     summary: Health probe
  *     description: Health probe for liveness and readiness check
  *     tags:
- *      - monitoring
+ *      - Monitoring
  *     responses:
  *       200:
  *         description: Returns `ok` status

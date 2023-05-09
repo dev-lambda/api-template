@@ -44,15 +44,26 @@ const router = express.Router();
 
 /**
  * @openapi
+ * tags:
+ *   - name: Integration
+ *     description: Integration support resources
+ */
+
+/**
+ * @openapi
  * /openAPI:
  *   get:
  *     summary: API specs file
  *     description: Get the OpenAPI json description for this API
  *     tags:
- *      - integration
+ *      - Integration
  *     responses:
  *       200:
  *         description: A json containing the OpenAPI specification
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: 'https://spec.openapis.org/oas/3.1/dialect/base'
  */
 router.get('/openAPI', (req, res) => {
   res.json(openapiSpecification);

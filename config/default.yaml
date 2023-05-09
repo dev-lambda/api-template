@@ -11,6 +11,9 @@ openAPI:
     name: API Support
     email: support@devlambda.com
     url: http://devlambda.com/support
+  externalDocs:
+    description: Full documentation site
+    url: https://dev-lambda.github.io/api-template/
 mongodb:
   host: mongodb://localhost:27017/default
   options:

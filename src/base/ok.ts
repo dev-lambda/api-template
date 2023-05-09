@@ -36,3 +36,12 @@ export const ok = (_: express.Request, res: express.Response) => {
 export interface message {
   message: string;
 }
+
+/**
+ * @openapi
+ * tags:
+ *   - name: API
+ *     description: API specific routes
+ *     externalDocs:
+ *       url: https://dev-lambda.github.io/api-template/
+ */
