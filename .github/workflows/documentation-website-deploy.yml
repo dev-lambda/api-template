@@ -27,7 +27,7 @@ jobs:
       - name: Generate and dump specs
         working-directory: .
         run: npm run dumpApiSpec
-  
+
       - name: Install dependencies
         working-directory: ./website
         run: npm ci
