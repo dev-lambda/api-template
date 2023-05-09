@@ -1,7 +1,7 @@
 import swaggerJsdoc from 'swagger-jsdoc';
 import project from 'src/../package.json';
 import config from 'config';
-import express from 'express';
+import { Router } from 'express';
 import swaggerUi from 'swagger-ui-express';
 import logger from 'src/logger';
 
@@ -40,7 +40,7 @@ export const uiOptions = {
 
 export const openapiSpecification = swaggerJsdoc(options);
 
-const router = express.Router();
+const router = Router();
 
 /**
  * @openapi

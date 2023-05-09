@@ -7,6 +7,7 @@ import { notFound } from './base/notFound';
 import { ok } from './base/ok';
 import { error } from './base/error';
 import { health } from './base/health';
+import metrics from './base/metrics';
 
 const port = config.get('restApi.port');
 
@@ -27,6 +28,7 @@ export const setupServer = (...router: express.Router[]) => {
   // Base Routes
   server.get('/', ok);
   server.get('/health', health);
+  server.use(metrics);
   server.use(notFound);
   server.use(error);
   return server;
