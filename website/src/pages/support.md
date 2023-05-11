@@ -2,7 +2,7 @@
 
 If there is any question not covered by the documentation feel free to send a mail to the following adress:
 
-[support@devlambda.com](mailto:support@example.com?subject=%5BSupport%20request%5D%20api-template)
+[support@devlambda.com](mailto:support@devlambda.com?subject=%5BSupport%20request%5D%20api-template)
 
 Note that rupport is provided on a best effort basis.
 
