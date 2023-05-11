@@ -118,12 +118,30 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'About api-template',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Support',
+                to: '/support',
               },
+              {
+                label: 'License',
+                to: '/license',
+              },
+            ],
+          },
+          {
+            title: 'Legal',
+            items: [
+              {
+                label: 'Legal mentions',
+                to: '/mentions',
+              },
+              {
+                label: "Terms of use",
+                to: '/terms',
+              },
+
             ],
           },
         ],

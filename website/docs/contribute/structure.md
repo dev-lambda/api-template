@@ -49,28 +49,32 @@ The project is organised as follows:
 - [x] Logger
   - [x] Json output
   - [x] Api request log
-- [ ] Docker file
-  - [x] Incremental changes
-  - [x] Test image
-  - [x] Production image excluding dev dependencies
+- [ ] Assets
+  - [x] Docker file
+    - [x] Incremental changes
+    - [ ] Test image
+    - [x] Production image excluding dev dependencies
   - [ ] Private packages
-- [x] CI/CD - GitHub Actions
+  - [ ] Helm chart
+- [x] CI - Publishing
   - [x] Linter
   - [x] Tests
   - [x] Licences audit
   - [ ] Sonarqube
-  - [ ] Integration env
   - [x] Public doc to github pages
   - [x] OpenAPI doc
   - [x] Build image
   - [x] Publish image to Github packages
-- [ ] Helm chart
-- [ ] Server setup
+- [ ] CD - Environments deploiment
+  - [ ] Production
+  - [ ] Public integration
+  - [ ] Dev, Staging, Test
+- [x] Server setup
   - [x] `ok` and `not found` middlewares
   - [x] error handler for uncatched and silent exceptions
   - [x] exit on initialization error
   - [x] health probe
-  - [ ] prometheus metrics
+  - [x] prometheus metrics
   - [x] license, licenses and license summary endpoints
   - [x] API doc
     - [x] OpenAPI doc

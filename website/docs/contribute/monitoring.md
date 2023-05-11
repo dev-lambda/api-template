@@ -99,7 +99,7 @@ activityCounter
   .inc();
 ```
 
-For more metric types check the [library documentation](https://github.com/siimon/prom-client#custom-metrics).
+For more metric types check the [`prom-client` library documentation](https://github.com/siimon/prom-client#custom-metrics).
 
 ### Dashboard
 
