@@ -5,12 +5,12 @@ info:
   version: 1.0.0
   license:
     name: ISC
-    url: https://opensource.org/license/isc-license-txt/
-  termsOfService: https://devlambda.com/terms/conditions
+    url: https://dev-lambda.github.io/api-template/license
+  termsOfService: https://dev-lambda.github.io/api-template/terms
   contact:
     name: API Support
     email: support@devlambda.com
-    url: http://devlambda.com/support
+    url: http://dev-lambda.github.io/api-template/support
   externalDocs:
     description: Full documentation site
     url: https://dev-lambda.github.io/api-template/
