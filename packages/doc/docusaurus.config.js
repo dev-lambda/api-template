@@ -61,7 +61,8 @@ const config = {
         // Plugin Options for loading OpenAPI files
         specs: [
           {
-            spec: 'openapi.json',
+            spec: './openapi.json',
+            // spec: 'https://redocly.github.io/redoc/openapi.yaml',
             route: '/api/',
           },
         ],
@@ -138,10 +139,9 @@ const config = {
                 to: '/mentions',
               },
               {
-                label: "Terms of use",
+                label: 'Terms of use',
                 to: '/terms',
               },
-
             ],
           },
         ],

@@ -1,6 +1,7 @@
 import express from 'express';
 import { isAlive as serverOK } from 'src/server';
 import { isAlive as dbOk } from 'src/db';
+import { healtStatus } from 'api-template-dto';
 
 /**
  * @openapi
@@ -76,7 +77,3 @@ export const health = (_: express.Request, res: express.Response) => {
  *           type: boolean
  *
  */
-export interface healtStatus {
-  server: boolean;
-  db: boolean;
-}

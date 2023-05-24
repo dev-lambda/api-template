@@ -1,5 +1,5 @@
+import { notFoundMessage } from 'api-template-dto';
 import express from 'express';
-import { message } from './ok';
 
 /**
  * @openapi
@@ -39,6 +39,3 @@ export const notFound = (req: express.Request, res: express.Response) => {
  *         path:
  *           type: string
  */
-export interface notFoundMessage extends message {
-  path: string;
-}

@@ -1,5 +1,5 @@
 import express from 'express';
-
+import { message } from 'api-template-dto';
 /**
  * @openapi
  * /:
@@ -33,9 +33,6 @@ export const ok = (_: express.Request, res: express.Response) => {
  *         message:
  *           type: string
  */
-export interface message {
-  message: string;
-}
 
 /**
  * @openapi
