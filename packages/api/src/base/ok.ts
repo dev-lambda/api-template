@@ -1,4 +1,4 @@
-import express from 'express';
+import { Request, Response } from 'express';
 import { message } from 'api-template-dto';
 /**
  * @openapi
@@ -18,7 +18,7 @@ import { message } from 'api-template-dto';
  *             example:
  *               message: "ok"
  */
-export const ok = (_: express.Request, res: express.Response) => {
+export const ok = (_: Request, res: Response) => {
   const result: message = { message: 'ok' };
   return res.status(200).json(result);
 };

@@ -1,4 +1,4 @@
-import express from 'express';
+import { Router } from 'express';
 import request from 'supertest';
 import { health } from './health';
 import { setupServer } from 'src/server';
@@ -18,7 +18,7 @@ describe('Health check', () => {
   });
 
   it('should give ok for a running server', async () => {
-    const router = express.Router();
+    const router = Router();
     router.use('/health', health);
 
     const server = setupServer(router);
@@ -47,7 +47,7 @@ describe('Health check', () => {
   });
 
   it('should detect missing db', async () => {
-    const router = express.Router();
+    const router = Router();
     router.use('/health', health);
 
     const server = setupServer(router);

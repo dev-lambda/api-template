@@ -12,7 +12,7 @@ interface ClientOptions {
 
 export const ClientName = 'api-template client';
 
-export class apiTemplateClient {
+export class Client {
   private axios: axios.AxiosInstance;
   private logger: Logger;
 
@@ -86,3 +86,5 @@ export class apiTemplateClient {
       });
   }
 }
+
+export default Client;

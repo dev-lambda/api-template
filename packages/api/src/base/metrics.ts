@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Request, Response, Router } from 'express';
 import Prometheus from 'prom-client';
 import project from 'src/../package.json';
 
@@ -16,7 +16,7 @@ Prometheus.collectDefaultMetrics({
 
 const router = Router();
 
-router.get('/metrics', async (req, res) => {
+router.get('/metrics', async (req: Request, res: Response) => {
   try {
     const metrics = await Prometheus.register.metrics();
     res.contentType(Prometheus.register.contentType);

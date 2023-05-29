@@ -17,11 +17,13 @@
     "build": "npm run build -workspaces --if-present",
     "clean": "npm run clean -workspaces --if-present",
     "test": "npm run test -workspaces --if-present -- --passWithNoTests",
-    "lint": "npm run lint -workspaces --if-present"
+    "lint": "npm run lint -workspaces --if-present",
+    "prettier": "prettier"
   },
   "author": "Draltan MARIN <moi@draltan.com>",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^29.5.1",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
     "eslint": "^8.36.0",

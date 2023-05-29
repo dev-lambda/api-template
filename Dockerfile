@@ -18,7 +18,7 @@ COPY package*.json ./
 COPY packages/dto ./packages/dto
 COPY packages/api ./packages/api
 
-RUN npm ci --workspace api-template
+RUN npm ci -include-workspace-root -w api-template
 
 ## cleanup private npm packages setup
 # RUN rm .npmrc

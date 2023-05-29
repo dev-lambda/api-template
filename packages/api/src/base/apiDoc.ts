@@ -1,7 +1,7 @@
 import swaggerJsdoc from 'swagger-jsdoc';
 import project from 'src/../package.json';
 import config from 'config';
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import swaggerUi from 'swagger-ui-express';
 import logger from 'src/logger';
 
@@ -71,7 +71,7 @@ const router = Router();
  *             schema:
  *                $ref: 'https://spec.openapis.org/oas/3.1/dialect/base'
  */
-router.get('/openAPI', (req, res) => {
+router.get('/openAPI', (req: Request, res: Response) => {
   res.json(openapiSpecification);
 });
 

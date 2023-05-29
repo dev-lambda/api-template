@@ -1,11 +1,11 @@
-import express from 'express';
+import { Request, Response, NextFunction } from 'express';
 import logger from 'src/logger';
 
 export const error = (
   error: Error,
-  req: express.Request,
-  res: express.Response,
-  next: express.NextFunction
+  req: Request,
+  res: Response,
+  next: NextFunction
 ) => {
   const { path, method, query } = req;
   const { message } = error;
@@ -34,7 +34,7 @@ export const explode =
 
 export const explodeAfterResponse =
   // prettier-ignore
-  (message = 'Intentional unhandled error') => (_: express.Request, res: express.Response) => {
+  (message = 'Intentional unhandled error') => (_: Request, res: Response) => {
     res.sendStatus(200);
     throw new Error(message);
   };

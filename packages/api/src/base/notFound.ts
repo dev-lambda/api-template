@@ -1,5 +1,5 @@
 import { notFoundMessage } from 'api-template-dto';
-import express from 'express';
+import { Request, Response } from 'express';
 
 /**
  * @openapi
@@ -21,7 +21,7 @@ import express from 'express';
  *               path: "/wrongPath"
  *
  */
-export const notFound = (req: express.Request, res: express.Response) => {
+export const notFound = (req: Request, res: Response) => {
   const { path } = req;
   const result: Partial<notFoundMessage> = { message: 'not found', path };
   return res.status(404).json(result);

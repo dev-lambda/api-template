@@ -1,4 +1,4 @@
-import express from 'express';
+import { Request, Response } from 'express';
 import { isAlive as serverOK } from 'src/server';
 import { isAlive as dbOk } from 'src/db';
 import { healtStatus } from 'api-template-dto';
@@ -52,7 +52,7 @@ import { healtStatus } from 'api-template-dto';
  *                   db: false
  */
 
-export const health = (_: express.Request, res: express.Response) => {
+export const health = (_: Request, res: Response) => {
   let server = serverOK();
   let db = dbOk();
   if (server && db) {
