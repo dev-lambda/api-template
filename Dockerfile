@@ -25,6 +25,7 @@ RUN npm ci -include-workspace-root -w api-template
 
 # copy all necessary (remaining) files and build (use .dockerignore to exclude specific files)
 COPY tsconfig.json ./
+RUN npm run build --workspace api-template-dto
 RUN npm run build --workspace api-template
 
 # remove dev-dependencies
