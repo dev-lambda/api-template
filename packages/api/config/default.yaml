@@ -20,4 +20,4 @@ mongodb:
     useUnifiedTopology: 'true'
     connectTimeoutMS: 1000
     serverSelectionTimeoutMS: 5000
-    keepAlive: true
+    # keepAlive: true

@@ -13,7 +13,10 @@ const port = config.get('restApi.port');
 
 export const setupServer = (...router: express.Router[]) => {
   const server = express();
-  server.use(cors());
+  let corsOptions: cors.CorsOptions = {
+    origin: '*',
+  };
+  server.use(cors(corsOptions));
   server.use(apiLogger);
 
   // Body parser options

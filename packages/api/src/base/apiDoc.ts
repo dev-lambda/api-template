@@ -11,6 +11,7 @@ const baseUrl = config.get<string>('restApi.baseUrl');
 const docOverrides = config.get<object>('openAPI');
 let url = new URL(baseUrl);
 url.port = port;
+url.protocol = 'http';
 
 const options: swaggerJsdoc.Options = {
   failOnErrors: true,
@@ -24,8 +25,13 @@ const options: swaggerJsdoc.Options = {
     },
     servers: [
       {
-        url,
+        url: '/',
+        description: 'This server',
+      },
+      {
+        url: 'http://localhost:3000/',
         description: 'Development server',
+        // crossOriginIsolated: true,
       },
     ],
   },

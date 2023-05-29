@@ -2,7 +2,11 @@
 sidebar_position: 3
 ---
 
-# Runtime settings
+# API Runtime settings
+
+:::note
+The following configuration settings apply for the API server sub-project located at `packages/api`. Configuration files refer to the contents of `packages/api/config` folder.
+:::
 
 This projects uses the [`config` library](https://www.npmjs.com/package/config). In a nutshell, configuration variables are defined in environment specific files under the `config` folder and certain values can be overriden using environment variables.
 
@@ -23,7 +27,7 @@ const dbOptions = config.get<object>('mongodb.options');
 ## Configuration files
 
 :::tip
-In order to quiclky override settings while developping you can use `config/local-development.yaml`. 
+In order to quiclky override settings while developping you can use `config/local-development.yaml`.
 
 Note: This file **should not be versionned** as it may be different for each developper and can possibly contain secrets for debugging purposes (it is already gitignored, but it's worth being aware of that).
 :::
@@ -53,10 +57,10 @@ openAPI:
   # You application title.
   # If absent uses package.json contents (preferred).
   title: Sample Pet Store App
-  # API version. You can use semantic versioning like 1.0.0, 
+  # API version. You can use semantic versioning like 1.0.0,
   # or an arbitrary string like 0.99-beta.
   # If absent uses package.json contents (preferred).
-  version: 1.0.0 
+  version: 1.0.0
   # API description. Arbitrary text in CommonMark or HTML.
   # If absent uses package.json contents (preferred).
   description: This is a sample server for a pet store.
@@ -73,7 +77,7 @@ openAPI:
     name: ISC
     url: https://opensource.org/license/isc-license-txt/
   # Link to the external documentation (if any).
-  # Code or documentation generation tools can use description as the text of the link. 
+  # Code or documentation generation tools can use description as the text of the link.
   externalDocs:
     description: Find out more
     url: http://example.com
@@ -86,25 +90,28 @@ mongodb:
     serverSelectionTimeoutMS: 5000
     keepAlive: true
 ```
+
 ## Environment variables
 
 ### Available environment variables
 
-| varialbe | development defaults | overrides | description |
-| --- | --- | --- | --- |
-| `PORT` | 3000 | `restApi.port` | The port that the server will listen to. |
-| `baseUrl` | http://localhost | `restApi.baseUrl` | Base url to be used when building absolute Urls` |
-| `logLevel` | info | `logLevel` | Defines the [log level](https://github.com/winstonjs/winston#logging-levels) that will be emitted. |
-| `mongoDbHost` | mongodb://localhost:27017/dev | `mongodb.host` | MongoDb connection string |
+| varialbe      | development defaults          | overrides         | description                                                                                        |
+| ------------- | ----------------------------- | ----------------- | -------------------------------------------------------------------------------------------------- |
+| `PORT`        | 3000                          | `restApi.port`    | The port that the server will listen to.                                                           |
+| `baseUrl`     | http://localhost              | `restApi.baseUrl` | Base url to be used when building absolute Urls`                                                   |
+| `logLevel`    | info                          | `logLevel`        | Defines the [log level](https://github.com/winstonjs/winston#logging-levels) that will be emitted. |
+| `mongoDbHost` | mongodb://localhost:27017/dev | `mongodb.host`    | MongoDb connection string                                                                          |
 
 Examples:
 
 Increase the log verbosity for a development run
+
 ```sh
 logLevel=debug npm run watch
 ```
 
 Runs the production server on the 4242 port
+
 ```sh
 PORT=4242 npm run prod
 ```
@@ -113,7 +120,7 @@ PORT=4242 npm run prod
 
 Accepted environment variables are defined in `config/custom-envirnment-variables.yaml`. For every path in the configuration tree structure you can specify the environment variable that will be used as input.
 
-```yaml  title="config/custom-envirnment-variables.yaml"
+```yaml title="config/custom-envirnment-variables.yaml"
 restApi:
   port: 'PORT'
   baseUrl: 'baseUrl'

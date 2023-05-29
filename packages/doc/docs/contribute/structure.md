@@ -1,29 +1,33 @@
 ---
 sidebar_position: 2
-image: https://i.imgur.com/mErPwqL.png
-keywords: 
-  - toto
-  - titi
-  - devs
 ---
 
 # Project structure
 
-The project is organised as follows:
+The project has a monorepo structure to include different aspects of the service : API server, SDK client library, DTOs and documentation.
 
+This structure is organised using npm native `workspaces` defined in the root `package.json` file.
+
+<!-- prettier-ignore -->
 - `readme.md`
-- `config/` <-- configuration files per environment
-- `src/`
-  - `index.ts` <-- Application launch and teardown
-  - `server.ts` <-- API server setup and initialisation logic
-  - `db.ts` <-- Db initialisation
-  - `logger.ts` <-- Logger setup
-  - `app.ts` <-- The main application router
-  - `base/`
-- `website/` <-- Documentation website
-  - `docs/`
-  - `src/`
-  - `static/`
+- `package.json`       <-- main project definition
+- `packages/`
+  - **`api`**          <-- API server
+    - `config/`        <-- configuration files per environment
+    - `src/`
+      - `index.ts`     <-- Application launch and teardown
+      - `server.ts`    <-- API server setup and initialisation logic
+      - `db.ts`        <-- Db initialisation
+      - `logger.ts`    <-- Logger setup
+      - `app.ts`       <-- The main application router
+      - `base/`        <-- Basic api middlewares (ok, notfound, health, ...)
+  - **`doc`**          <-- Documentation website
+    - `docs/`
+    - `src/`
+    - `static/`
+  - **`dto`**
+  - **`sdk`**         <-- API Client library
+    - `src`
 - `.github/workflows/` <-- CI/CD github actions
 
 ## Project setup
@@ -45,7 +49,7 @@ The project is organised as follows:
   - [x] Supertest
 - [x] Config
   - [x] Env variables support
-  - [x] Defaults, dev, test & prod environment settings  
+  - [x] Defaults, dev, test & prod environment settings
 - [x] Logger
   - [x] Json output
   - [x] Api request log

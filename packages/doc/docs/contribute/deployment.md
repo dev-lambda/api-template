@@ -15,6 +15,7 @@ docker build . -t api-template:local
 ### Launch a development instance of mongodb (if needed) {#mongodb}
 
 Create a local network for dependent docker instances (once only, optional)
+
 ```sh
 docker network create local
 ```
@@ -22,6 +23,7 @@ docker network create local
 Make sure a mongodb instance is running locally
 
 - Create a new docker instance for mongodb (only once)
+
   ```sh
   docker run \
     --net local \
@@ -42,10 +44,10 @@ Make sure a mongodb instance is running locally
 docker run \
   --rm \
   --name api-template \
-  -p 80:8000 \
+  -p 8000:80 \
   --net local \
   --env mongoDbHost="mongodb://mongodb-dev:27017/prod" \
-  --env logLevel="debug" \
+  --env logLevel="info" \
   api-template:local
 ```
 
@@ -71,19 +73,10 @@ Deploying those images to production or any other environment is not in the scop
 
 #### Licences compliance verification
 
-  Prevent copyleft licences by allowing only an explicit subset of licenses.
+Prevent copyleft licences by allowing only an explicit subset of licenses.
 
-  The list of all currently allowed licenses:
-    - MIT
-    - ISC
-    - 0BSD
-    - BSD-2-Clause
-    - BSD-3-Clause
-    - CC-BY-3.0
-    - CC0-1.0
-    - Apache-2.0
-    - Python-2.0
-    
+The list of all currently allowed licenses: - MIT - ISC - 0BSD - BSD-2-Clause - BSD-3-Clause - CC-BY-3.0 - CC0-1.0 - Apache-2.0 - Python-2.0
+
 :::tip
 In order to add a new license to the list modify the `--onlyAllow` flag of the `license:check` npm script.
 :::
@@ -112,7 +105,7 @@ Note that tests are run from the typescript sources, neither from the transpiled
 
 If all previous steps are ok, the final assets are ready to be published.
 
-Docker images are tagged both with the version number and the commit tag. The version number is extracted from git tags, not the actual version in the `package.json file`. Note that the version major and minor labels are moving tags. The branch name is also added as a tag 
+Docker images are tagged both with the version number and the commit tag. The version number is extracted from git tags, not the actual version in the `package.json file`. Note that the version major and minor labels are moving tags. The branch name is also added as a tag
 
 :::tip
 In order to publish a new version number you need to publish a tag in the form of `v1.0.0`.
@@ -121,6 +114,7 @@ In order to publish a new version number you need to publish a tag in the form o
 git tag v1.0.0
 git push --tags
 ```
+
 :::
 
 Docker images are published to the [github project's docker repository](https://github.com/dev-lambda/api-template/pkgs/container/api-template)
@@ -144,5 +138,3 @@ The action requires permissions to read and write on the repository. These permi
 In order to activate the page publishing you need to set the following project setting on the [Github pages setup](https://github.com/dev-lambda/api-template/settings/pages):
 
 - Deploy from a branch `gh-pages` `/(root)`
-
-

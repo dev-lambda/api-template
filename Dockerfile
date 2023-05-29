@@ -15,14 +15,17 @@ WORKDIR /workspace
 
 ## actually install dependencies (force layer creation on package.json changes)
 COPY package*.json ./
-RUN npm ci
+COPY packages/dto ./packages/dto
+COPY packages/api ./packages/api
+
+RUN npm ci --workspace api-template
 
 ## cleanup private npm packages setup
 # RUN rm .npmrc
 
 # copy all necessary (remaining) files and build (use .dockerignore to exclude specific files)
-COPY . ./
-RUN npm run build
+COPY tsconfig.json ./
+RUN npm run build --workspace api-template
 
 # remove dev-dependencies
 RUN npm prune --omit=dev

@@ -5,13 +5,14 @@ sidebar_position: 5
 # Documentation guidelines and supports
 
 :::tip
+
 ## Document intentionality, concepts and metaphores.
 
-Code documents itself, but you can't understand the aim that lead to a specific implentation, or how the code should evolve based only on what's written. 
+Code documents itself, but you can't understand the aim that lead to a specific implentation, or how the code should evolve based only on what's written.
 :::
 
-
 :::tip
+
 ## Document for humans.
 
 Be explicit on use cases that the project should cover and ilustrate with working examples.
@@ -65,27 +66,24 @@ Be explicit on use cases that the project should cover and ilustrate with workin
 
 This project has a documentation site in order to provide guided learn paths and comprehensive documentation about the project.
 
-It uses docusaurus as the site builder engine and is hosted in a github page available at: 
+It uses docusaurus as the site builder engine and is hosted in a github page available at:
 
 [https://dev-lambda.github.io/api-template/](https://dev-lambda.github.io/api-template/)
 
-The full documentation website is organised as a standard docusaurus site under the `\website` folder. Its dependencies are independent as those of the project's which means that it has it's own `npm scrips` and requires installing its own packages under `\website\node_modules`.
+The full documentation website is organised as a standard docusaurus site under the `/packages/doc` folder. Its dependencies are independent as those of the project's which means that it has it's own set of `npm scrips` and requires installing its own packages for the `api-template-doc` workspace.
 
-In order to run the documentation locally go to the `/website` folder and use the following npm scripts:
-
-- Install documentation site dependencies (only needed the first time and on documentation depandencies changes)
-  ```sh title="in the \website folder"
-  npm install
-  ```
-
-- Generate/update the OpenAPI specification from code comments for the API section of the documentation
-  ```sh title="in the project root folder"
-  npm dumpApiSpec
-  ```
+In order to run the documentation locally:
 
 - Launch a local instance of the documentation site
-  ```sh title="in the \website folder"
-  npm start
+
+  ```sh title="In the project root folder"
+  npm run doc
+  ```
+
+- Generate/refresh the OpenAPI specification from code comments for the API section of the documentation
+
+  ```sh title="In the project root folder"
+  npm run dumpApiSpec -w api-template
   ```
 
 The local documentation page is available at [http://localhost:3500/api-template](http://localhost:3500/api-template).
