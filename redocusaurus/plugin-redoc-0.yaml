@@ -15,6 +15,8 @@ info:
     description: Full documentation site
     url: https://dev-lambda.github.io/api-template/
 servers:
+  - url: /
+    description: This server
   - url: http://localhost:3000/
     description: Development server
 paths:
@@ -69,47 +71,6 @@ paths:
                   value:
                     server: false
                     db: false
-  /license:
-    get:
-      summary: License
-      description: Get the license of this project
-      tags:
-        - License
-      responses:
-        '200':
-          description: This project's licence
-  /licenses:
-    get:
-      summary: Dependencies
-      description: Get the complete list of licenses used
-      tags:
-        - License
-      responses:
-        '200':
-          description: Returns the production packages licence report
-  /licenses/summary:
-    get:
-      summary: License types used
-      description: Get a summary of dependencies per license type
-      tags:
-        - License
-      responses:
-        '200':
-          description: Returns a dictionary of dependent packages grouped per license type
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/licenseSummary'
-              example:
-                MIT:
-                  - name: '@apidevtools/openapi-schemas'
-                    version: 2.1.0
-                    description: >-
-                      JSON Schemas for every version of the OpenAPI
-                      Specification
-                  - name: '@apidevtools/swagger-methods'
-                    version: 3.0.2
-                    description: HTTP methods that are supported by Swagger 2.0
   /wrongPath:
     get:
       summary: Not found
@@ -150,20 +111,6 @@ components:
           type: boolean
         db:
           type: boolean
-    licenseSummary:
-      type: object
-      additionalProperties:
-        type: array
-        $ref: '#/components/schemas/licenceDigest'
-    licenceDigest:
-      type: object
-      properties:
-        name:
-          type: string
-        version:
-          type: string
-        description:
-          type: string
     notFoundMessage:
       type: object
       properties:
@@ -207,8 +154,6 @@ tags:
     description: Integration support resources
   - name: Monitoring
     description: Monitoring and health check features
-  - name: License
-    description: License introspection
   - name: API
     description: API specific routes
     externalDocs:
