@@ -11,7 +11,6 @@
   "engines": {
     "node": "^18"
   },
-  "private": true,
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
