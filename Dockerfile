@@ -10,7 +10,7 @@ WORKDIR /workspace
 # install dependencies layer
 
 ## allow private npm packages
-ARG GITHUB_NPM_TOKEN
+ARG GITHUB_TOKEN
 COPY .npmrc-ci .npmrc
 
 ## actually install dependencies (force layer creation on package.json changes)

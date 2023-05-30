@@ -17,6 +17,8 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     strategy:
       matrix:
@@ -42,6 +44,11 @@ jobs:
           name: built-assets
           path: |
             packages/**/dist
+      - uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          working-directory: packages/api/coverage
+          test-script: npm test
+          skip-step: all
 
   publish-packages:
     runs-on: ubuntu-latest
