@@ -38,7 +38,6 @@ jobs:
       - run: npm run build -w @dev-lambda/api-template
       - run: npm run build -w @dev-lambda/api-template-sdk
       - run: npm test
-      - run: find packages
       - name: Keep built output
         uses: actions/upload-artifact@v3
         with:
@@ -46,10 +45,10 @@ jobs:
           path: |
             packages/**/dist
       - name: Coverage report
-        uses: romeovs/lcov-reporter-action@v0.2.16
+        uses: romeovs/lcov-reporter-action@v0.2.21
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          lcov-file: packages/api/coverage/lcov.info
+          lcov-file: ./packages/api/coverage/lcov.info
 
   publish-packages:
     runs-on: ubuntu-latest
