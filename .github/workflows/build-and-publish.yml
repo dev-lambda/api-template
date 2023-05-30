@@ -60,6 +60,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: built-assets
+          path: packages
       - run: find packages
       - run: npm publish -w @dev-lambda/api-template-dto  -w @dev-lambda/api-template-sdk
         env:
