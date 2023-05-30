@@ -20,7 +20,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -60,6 +60,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: built-assets
+      - run: find packages
       - run: npm publish -w @dev-lambda/api-template-dto  -w @dev-lambda/api-template-sdk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
