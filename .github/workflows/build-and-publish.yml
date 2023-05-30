@@ -36,6 +36,12 @@ jobs:
       - run: npm run build -w @dev-lambda/api-template
       - run: npm run build -w @dev-lambda/api-template-sdk
       - run: npm test
+      - name: Keep built output
+        uses: actions/upload-artifact@v3
+        with:
+          name: built-assets
+          path: |
+            packages/**/dist
 
   publish-packages:
     runs-on: ubuntu-latest
@@ -50,6 +56,10 @@ jobs:
         with:
           node-version: 18.x
           cache: 'npm'
+      - name: Restore built output
+        uses: actions/download-artifact@v3
+        with:
+          name: built-assets
       - run: npm publish -w @dev-lambda/api-template-dto  -w @dev-lambda/api-template-sdk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
