@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkapi_template_doc=self.webpackChunkapi_template_doc||[]).push([[527],{9162:e=>{e.exports=JSON.parse('{"name":"docusaurus-plugin-redoc","id":"plugin-redoc-0"}')}}]);

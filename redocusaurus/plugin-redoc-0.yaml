@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: API Template project
-  title: api-template
+  title: '@dev-lambda/api-template'
   version: 1.0.0
   license:
     name: ISC
