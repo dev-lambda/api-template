@@ -44,11 +44,11 @@ jobs:
           name: built-assets
           path: |
             packages/**/dist
-      - uses: ArtiomTr/jest-coverage-report-action@v2
+      - name: Coverage report
+        uses: romeovs/lcov-reporter-action@v0.2.16
         with:
-          working-directory: packages/api/coverage
-          test-script: npm test
-          skip-step: all
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          lcov-file: ./packages/api/coverage/lcov.info
 
   publish-packages:
     runs-on: ubuntu-latest
