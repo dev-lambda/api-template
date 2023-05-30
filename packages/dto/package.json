@@ -14,7 +14,11 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
-  "types": "./dist/src/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/src/index.d.ts",
+  "files": [
+    "dist/*"
+  ],
   "scripts": {
     "prod": "NODE_PATH=dist NODE_ENV=production node dist/src/index.js",
     "start": "ts-node src/index.ts",

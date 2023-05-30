@@ -34,6 +34,7 @@ jobs:
       - run: npm run lint
       - run: npm run build -w @dev-lambda/api-template-dto
       - run: npm run build -w @dev-lambda/api-template
+      - run: npm run build -w @dev-lambda/api-template-sdk
       - run: npm test
 
   publish-packages:
@@ -49,9 +50,10 @@ jobs:
         with:
           node-version: 18.x
           cache: 'npm'
-      - run: npm publish -w @dev-lambda/api-template-dto
+      - run: npm publish -w @dev-lambda/api-template-dto  -w @dev-lambda/api-template-sdk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   build-and-push-image:
     runs-on: ubuntu-latest
     needs: publish-packages
