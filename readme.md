@@ -14,4 +14,3 @@ Mosts of the pre-configured features are documented on the documentation website
 - Test setup including coverage report
 - CI Build and publishing
 - General and API documentation including publication logic
-- License checking

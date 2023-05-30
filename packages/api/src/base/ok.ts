@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { message } from 'api-template-dto';
+import { message } from '@dev-lambda/api-template-dto';
 /**
  * @openapi
  * /:

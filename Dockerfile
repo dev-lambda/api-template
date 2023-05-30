@@ -10,23 +10,23 @@ WORKDIR /workspace
 # install dependencies layer
 
 ## allow private npm packages
-# ARG GITHUB_NPM_TOKEN
-# COPY .npmrc-ci .npmrc
+ARG GITHUB_NPM_TOKEN
+COPY .npmrc-ci .npmrc
 
 ## actually install dependencies (force layer creation on package.json changes)
 COPY package*.json ./
 COPY packages/dto ./packages/dto
 COPY packages/api ./packages/api
 
-RUN npm ci -include-workspace-root -w api-template
+RUN npm ci -include-workspace-root -workspace @dev-lambda/api-template
 
 ## cleanup private npm packages setup
-# RUN rm .npmrc
+RUN rm .npmrc
 
 # copy all necessary (remaining) files and build (use .dockerignore to exclude specific files)
 COPY tsconfig.json ./
-RUN npm run build --workspace api-template-dto
-RUN npm run build --workspace api-template
+RUN npm run build --workspace @dev-lambda/api-template-dto
+RUN npm run build --workspace @dev-lambda/api-template
 
 # remove dev-dependencies
 RUN npm prune --omit=dev

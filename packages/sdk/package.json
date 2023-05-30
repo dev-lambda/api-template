@@ -1,10 +1,22 @@
 {
-  "name": "api-template-sdk",
+  "name": "@dev-lambda/api-template-sdk",
   "version": "1.0.0",
-  "description": "API Template project",
+  "description": "API Template project – SDK",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dev-lambda/api-template"
+  },
+  "author": "Dev Lambda <tech@devlambda.com>",
+  "license": "ISC",
+  "engines": {
+    "node": "^18"
+  },
+  "private": true,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "module": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
-  "private": true,
   "scripts": {
     "prepublish": "tsc --project tsconfig.production.json",
     "build": "tsc --project tsconfig.production.json",

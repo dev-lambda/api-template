@@ -1,6 +1,16 @@
 {
-  "name": "api-template-doc",
+  "name": "@dev-lambda/api-template-doc",
   "version": "1.0.0",
+  "description": "API Template project – Documentation",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dev-lambda/api-template"
+  },
+  "author": "Dev Lambda <tech@devlambda.com>",
+  "license": "ISC",
+  "engines": {
+    "node": ">=16.14"
+  },
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
@@ -43,9 +53,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "engines": {
-    "node": ">=16.14"
   },
   "resolutions": {
     "yaml": "1.10.2"

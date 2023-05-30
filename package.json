@@ -1,27 +1,28 @@
 {
-  "name": "root",
+  "name": "@dev-lambda/api-template-root",
   "version": "1.0.0",
   "description": "API Template project",
   "repository": {
     "type": "git",
     "url": "https://github.com/dev-lambda/api-template"
   },
+  "author": "Dev Lambda <tech@devlambda.com>",
+  "license": "ISC",
   "engines": {
     "node": "^18"
   },
+  "private": true,
   "scripts": {
-    "prod": "npm run prod -workspace api-template",
-    "start": "npm start -workspace api-template",
-    "watch": "npm run watch -workspace api-template",
-    "doc": "npm run dumpApiSpec -w api-template && npm start -workspace api-template-doc",
+    "prod": "npm run prod -workspace @dev-lambda/api-template",
+    "start": "npm start -workspace @dev-lambda/api-template",
+    "watch": "npm run watch -workspace @dev-lambda/api-template",
+    "doc": "npm run dumpApiSpec -w @dev-lambda/api-template && npm start -workspace @dev-lambda/api-template-doc",
     "build": "npm run build -workspaces --if-present",
     "clean": "npm run clean -workspaces --if-present",
     "test": "npm run test -workspaces --if-present -- --passWithNoTests",
     "lint": "npm run lint -workspaces --if-present",
     "prettier": "prettier"
   },
-  "author": "Draltan MARIN <moi@draltan.com>",
-  "license": "ISC",
   "devDependencies": {
     "@types/jest": "^29.5.1",
     "@typescript-eslint/eslint-plugin": "^5.53.0",

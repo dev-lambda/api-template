@@ -1,14 +1,17 @@
 {
-  "name": "api-template",
+  "name": "@dev-lambda/api-template",
   "version": "1.0.0",
   "description": "API Template project",
   "repository": {
     "type": "git",
     "url": "https://github.com/dev-lambda/api-template"
   },
+  "author": "Dev Lambda <tech@devlambda.com>",
+  "license": "ISC",
   "engines": {
     "node": "^18"
   },
+  "private": true,
   "main": "dist/src/main.js",
   "scripts": {
     "prod": "NODE_PATH=dist NODE_ENV=production node dist/src/index.js",
@@ -22,8 +25,6 @@
     "lint": "eslint .",
     "dumpApiSpec": "ts-node src/base/dumpOpenApi.ts"
   },
-  "author": "Draltan MARIN <moi@draltan.com>",
-  "license": "ISC",
   "devDependencies": {
     "@types/config": "^3.3.0",
     "@types/cors": "^2.8.13",
