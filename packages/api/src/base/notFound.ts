@@ -1,41 +1,43 @@
-import { notFoundMessage } from '@dev-lambda/api-template-dto';
+import {
+  notFoundMessage,
+  notFoundMessageSchema,
+} from '@dev-lambda/api-template-dto';
 import { Request, Response } from 'express';
+import registry from 'src/doc/openApi';
 
-/**
- * @openapi
- * /wrongPath:
- *   get:
- *     summary: Not found
- *     description: The response given on any unknown path
- *     tags:
- *       - API
- *     responses:
- *       404:
- *         description: The `not found` response
- *         content:
- *           application/json:
- *             schema:
- *                $ref: '#/components/schemas/notFoundMessage'
- *             example:
- *               message: "not found"
- *               path: "/wrongPath"
- *
- */
-export const notFound = (req: Request, res: Response) => {
-  const { path } = req;
-  const result: Partial<notFoundMessage> = { message: 'not found', path };
-  return res.status(404).json(result);
+export const notFoundResponse = {
+  404: {
+    description: 'Resource not found',
+    content: {
+      'application/json': {
+        schema: notFoundMessageSchema,
+        example: {
+          message: 'not found',
+          path: '/wrongPath',
+          params: {},
+        },
+      },
+    },
+  },
 };
 
-/**
- * @openapi
- * components:
- *   schemas:
- *     notFoundMessage:
- *       type: object
- *       properties:
- *         message:
- *           type: string
- *         path:
- *           type: string
- */
+registry.registerPath({
+  method: 'get',
+  path: '/wrongPath',
+  summary: 'Not found',
+  description: 'The response given on any unknown path',
+  tags: ['Base'],
+  responses: {
+    ...notFoundResponse,
+  },
+});
+
+export const notFound = (req: Request, res: Response) => {
+  const { path, params } = req;
+  const result: Partial<notFoundMessage> = {
+    message: 'not found',
+    path,
+    params,
+  };
+  return res.status(404).json(result);
+};

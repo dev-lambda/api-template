@@ -14,10 +14,10 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
-  "main": "dist/index.js",
-  "types": "dist/src/index.d.ts",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
   "files": [
-    "dist/*"
+    "src/*"
   ],
   "scripts": {
     "prod": "NODE_PATH=dist NODE_ENV=production node dist/src/index.js",
@@ -31,8 +31,8 @@
     "test:watch": "jest --watch --detectOpenHandles src",
     "lint": "eslint ."
   },
-  "devDependencies": {
-  },
   "dependencies": {
+    "@asteasolutions/zod-to-openapi": "^5.1.0",
+    "zod": "^3.21.4"
   }
 }

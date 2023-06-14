@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { message, healtStatus } from '@dev-lambda/api-template-dto';
+import { message, HealthReport } from '@dev-lambda/api-template-dto';
 import { errorLogInterceptor } from './errorLogInterceptor';
 import { SDKError, ErrorType } from './SDKError';
 import { responseLogInterceptor } from './responseLogInterceptor';
@@ -73,7 +73,7 @@ export class Client {
     let path = '/health';
 
     return this.axios
-      .get<healtStatus>(path, {
+      .get<HealthReport>(path, {
         validateStatus: () => true, // accept all status codes, including 500
       })
       .then((response) => {

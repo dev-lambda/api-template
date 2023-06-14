@@ -1,12 +1,3 @@
-export interface message {
-  message: string;
-}
-
-export interface notFoundMessage extends message {
-  path: string;
-}
-
-export interface healtStatus {
-  server: boolean;
-  db: boolean;
-}
+export * from './baseAPI';
+export * from './HealthReport';
+export { default as z } from './zod';

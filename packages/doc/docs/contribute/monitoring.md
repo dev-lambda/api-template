@@ -9,6 +9,7 @@ sidebar_position: 8
 Logs are timestamped and output in json format to the standard output.
 
 Example:
+
 ```json
 {"level":"info","message":"Starting server","timestamp":"2023-05-09T14:02:03.995Z"}
 {"address":"::","family":"IPv6","level":"info","message":"Server started","port":3000,"timestamp":"2023-05-09T14:02:04.010Z"}
@@ -19,17 +20,18 @@ Example:
 ### API logs
 
 All api calls are logged using the following informations extracted from morgan library:
+
 ```ts title="src/logger.ts"
-  const info = {
-    remoteAddr,
-    user,
-    method,
-    url,
-    httpVersion,
-    status,
-    length,
-    responseTime,
-  };
+const info = {
+  remoteAddr,
+  user,
+  method,
+  url,
+  httpVersion,
+  status,
+  length,
+  responseTime,
+};
 ```
 
 ### Using logs
@@ -45,12 +47,16 @@ logger.debug('configuration used', resolvedConfigObject);
 
 logger.info('application started');
 
-logger.warn('something is fishy while doing [work]. The expected [invariant] is not in an expected state', {myInvariantStatus})
+logger.warn(
+  'something is fishy while doing [work]. The expected [invariant] is not in an expected state',
+  { myInvariantStatus }
+);
 
 logger.error('[my function] failed to execute', err);
 ```
 
 In order to locally force a given debug level:
+
 ```sh
 logLevel=debug npm run watch
 ```
@@ -66,6 +72,7 @@ Prometheus metrics are exposed at `/metrics` endpoint.
 ### Default metrics
 
 Default exposed metrics:
+
 - `http_request_duration_milliseconds`
 - `http_request_count`
 - prometheus default metrics
@@ -94,7 +101,7 @@ Prometheus.register.registerMetric(activityCounter);
 // use the counter at the appropriate level (controller, service, ...)
 activityCounter
   .labels({
-    type: 'userMessage' // this could be anything: fileGeneration, message type, ...
+    type: 'userMessage', // this could be anything: fileGeneration, message type, ...
   })
   .inc();
 ```
